@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Kea DDNS server"
+
+command="/usr/sbin/kea-ddns"
+command_args="-t ${KEA_CONF:=/etc/kea/${SVCNAME}.conf}"
+pidfile="/run/${SVCNAME}.pid"
+
+depend() {
+	use net
+}
