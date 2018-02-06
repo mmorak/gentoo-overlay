@@ -47,12 +47,8 @@ src_configure() {
 src_install() {
 	default
 
-	newconfd "${FILESDIR}"/${PN}-dhcp4-confd ${PN}-dhcp4
-	newconfd "${FILESDIR}"/${PN}-dhcp6-confd ${PN}-dhcp6
-	newconfd "${FILESDIR}"/${PN}-ddns-confd ${PN}-ddns
-	newinitd "${FILESDIR}"/${PN}-dhcp4-initd ${PN}-dhcp4
-	newinitd "${FILESDIR}"/${PN}-dhcp6-initd ${PN}-dhcp6
-	newinitd "${FILESDIR}"/${PN}-ddns-initd ${PN}-ddns
+	newconfd "${FILESDIR}"/${PN}-confd ${PN}
+	newconfd "${FILESDIR}"/${PN}-initd ${PN}
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
