@@ -1,0 +1,4 @@
+# /etc/conf.d/kea: config file for /etc/init.d/kea
+
+# Specify a configuration file for keactrl
+# KEACTRL_CONF="/etc/kea/keactrl.conf"
