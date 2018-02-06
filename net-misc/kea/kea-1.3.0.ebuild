@@ -48,7 +48,7 @@ src_install() {
 	default
 
 	newconfd "${FILESDIR}"/${PN}-confd ${PN}
-	newconfd "${FILESDIR}"/${PN}-initd ${PN}
+	newinitd "${FILESDIR}"/${PN}-initd ${PN}
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
