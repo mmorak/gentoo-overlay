@@ -32,25 +32,37 @@ DEPEND="
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
+
 	# Brand the version with Gentoo
 	sed -i \
 		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
 		configure || die
-	default
 }
 
 src_configure() {
 	econf $(use_with openssl) \
-			--disable-static
+		--disable-static
 }
 
 src_install() {
 	default
 
-	newconfd "${FILESDIR}"/${PN}-confd ${PN}
-	newinitd "${FILESDIR}"/${PN}-initd ${PN}
+	newconfd "${FILESDIR}"/${PN}-ctrl-agent-confd ${PN}-ctrl-agent
+	newconfd "${FILESDIR}"/${PN}-dhcp4-confd ${PN}-dhcp4
+	newconfd "${FILESDIR}"/${PN}-dhcp6-confd ${PN}-dhcp6
+	newconfd "${FILESDIR}"/${PN}-dhcp-ddns-confd ${PN}-dhcp-ddns
 
+	newinitd "${FILESDIR}"/${PN}-ctrl-agent-initd ${PN}-ctrl-agent
+	newinitd "${FILESDIR}"/${PN}-dhcp4-initd ${PN}-dhcp4
+	newinitd "${FILESDIR}"/${PN}-dhcp6-initd ${PN}-dhcp6
+	newinitd "${FILESDIR}"/${PN}-dhcp-ddns-initd ${PN}-dhcp-ddns
+
+	# Delete libtool files and static libraries
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+
+	# We don't want Kea's keactrl utility, since services are managed by initd
+	find "${ED}" -name "keactrl*" -delete || die
 }
 
 pkg_preinst() {

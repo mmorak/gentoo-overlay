@@ -1,0 +1,56 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# set up extra commands
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+# set up configuration info
+: ${KEA_DHCP_DDNS_CONF:=/etc/kea/kea-dhcp-ddns.conf}
+: ${KEA_LOGGER_DESTINATION:=syslog:daemon}
+: ${KEA_PIDFILE_DIR:=/run/kea}
+: ${KEA_LOCKFILE_DIR:=${KEA_PIDFILE_DIR}}
+conf_name=$(basename ${KEA_DHCP_DDNS_CONF} | cut -f1 -d'.')
+
+# set up commands and daemon info
+# we run as user "dhcp" if we can set capabilities
+name="Kea DHCP DDNS Server"
+command="/usr/sbin/kea-dhcp-ddns"
+command_args="${KEA_DHCP_DDNS_OPTS} -c ${KEA_DHCP_DDNS_CONF}"
+command_user="dhcp:dhcp"
+pidfile="${KEA_PIDFILE_DIR}/${conf_name}.$(basename ${command}).pid"
+start_stop_daemon_args="--background
+	--env KEA_LOGGER_DESTINATION=\"${KEA_LOGGER_DESTINATION}\"
+	--env KEA_PIDFILE_DIR=\"${KEA_PIDFILE_DIR}\"
+	--env KEA_LOCKFILE_DIR=\"${KEA_LOCKFILE_DIR}\"
+"
+
+depend() {
+	need net
+	use dns logger
+}
+
+start_pre() {
+	
+	checkpath --directory --owner "${command_user}" --mode 0755 \
+		"${KEA_PIDFILE_DIR}"
+	checkpath --file --owner "${command_user}" --mode 0660 \
+		"${KEA_LOCKFILE_DIR}"/logger_lockfile
+
+	checkconfig || return 1
+}
+
+checkconfig() {
+	ebegin "Checking configuration file ${KEA_DHCP_DDNS_CONF}"
+	${command} -t "${KEA_DHCP_DDNS_CONF}"
+	eend $? "Syntax error in ${KEA_DHCP_DDNS_CONF}."
+}
+
+reload() {
+	
+	ebegin "Reloading configuration from file ${KEA_DHCP_DDNS_CONF}"
+	start-stop-daemon --signal HUP \
+		--exec "${command}" --pidfile "${pidfile}"
+	eend $?
+}

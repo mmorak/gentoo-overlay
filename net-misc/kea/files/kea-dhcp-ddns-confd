@@ -1,0 +1,17 @@
+# /etc/conf.d/kea-dhcp-ddns: config file for /etc/init.d/kea-dhcp-ddns
+
+# Specify additional command-line parameters for the server
+#KEA_DHCP_DDNS_OPTS=""
+
+# Specify a configuration file for kea-dhcp-ddns
+#KEA_DHCP_DDNS_CONF="/etc/kea/kea-dhcp-ddns.conf"
+
+# Specify a log destination (can be either a file name, or one of:
+# stdout, stderr, syslog, syslog:<facility>
+#KEA_LOGGER_DESTINATION="syslog:daemon"
+
+# Specify the directory for the PID file
+#KEA_PIDFILE_DIR="/run/kea"
+
+# Specify the directory for the LOCK file
+#KEA_LOCKFILE_DIR="${KEA_PIDFILE_DIR}"
