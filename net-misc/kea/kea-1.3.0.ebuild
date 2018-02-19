@@ -19,7 +19,7 @@ SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+openssl test"
+IUSE="+openssl perfdhcp test"
 
 DEPEND="
 	dev-libs/boost:=
@@ -63,6 +63,27 @@ src_install() {
 
 	# We don't want Kea's keactrl utility, since services are managed by initd
 	find "${ED}" -name "keactrl*" -delete || die
+
+	# delete perfdhcp if we don't want it
+	if ! use perfdhcp; then
+		find "${ED}" -name "perfdhcp*" -delete || die
+	fi
+
+	# delete useless directories that get installed by 'make install'
+	rm -r "${ED}"/var || die
+
+	# rename the hooks directory in $libdir to something easily identifiable
+	find "${ED}" -name "hooks" -type d | grep lib \
+		| sed -e 'p;s/hooks/kea/' | xargs -n2 mv
+
+	# change paths in default config files
+	sed -i 's:/tmp/:/run/kea/:g' "${ED}"/etc/kea/*.conf || die
+	sed -i 's|/var/lib/log/.*.log|syslog:daemon|g' \
+		"${ED}"/etc/kea/*.conf || die
+	sed -i '65i\ \ \ \ \ \ \ \ "name": "/var/db/kea/leases-dhcp4.csv",' \
+		"${ED}"/etc/kea/kea-dhcp4.conf || die
+	sed -i '57i\ \ \ \ \ \ \ \ "name": "/var/db/kea/leases-dhcp6.csv",' \
+		"${ED}"/etc/kea/kea-dhcp6.conf || die
 }
 
 pkg_preinst() {
