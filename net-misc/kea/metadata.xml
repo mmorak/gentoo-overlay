@@ -9,6 +9,5 @@
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of
 			<pkg>dev-libs/botan</pkg></flag>
 		<flag name="perfdhcp">Install perfdhcp, a DHCP benchmarking tool</flag>
-		<flag name="test">Enable unit tests during build</flag>
 	</use>
 </pkgmetadata>

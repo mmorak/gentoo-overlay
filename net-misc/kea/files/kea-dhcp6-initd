@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # set up extra commands
@@ -8,9 +8,8 @@ extra_started_commands="reload"
 
 # set up configuration info
 : ${KEA_DHCP6_CONF:=/etc/kea/kea-dhcp6.conf}
-: ${KEA_LOGGER_DESTINATION:=syslog:daemon}
-: ${KEA_PIDFILE_DIR:=/run/kea}
-: ${KEA_LOCKFILE_DIR:=${KEA_PIDFILE_DIR}}
+: ${KEA_LOGGER_DESTINATION:=/var/log/kea-dhcp6.log}
+: ${KEA_LOCKFILE_DIR:=none}
 conf_name=$(basename ${KEA_DHCP6_CONF} | cut -f1 -d'.')
 
 # set up commands and daemon info
@@ -19,10 +18,9 @@ name="Kea DHCPv6 Server"
 command="/usr/sbin/kea-dhcp6"
 command_args="${KEA_DHCP6_OPTS} -c ${KEA_DHCP6_CONF}"
 [[ -f /sbin/setcap ]] && command_user="dhcp:dhcp"
-pidfile="${KEA_PIDFILE_DIR}/${conf_name}.$(basename ${command}).pid"
+pidfile="${KEA_LOCKFILE_DIR}/${conf_name}.$(basename ${command}).pid"
 start_stop_daemon_args="--background
 	--env KEA_LOGGER_DESTINATION=\"${KEA_LOGGER_DESTINATION}\"
-	--env KEA_PIDFILE_DIR=\"${KEA_PIDFILE_DIR}\"
 	--env KEA_LOCKFILE_DIR=\"${KEA_LOCKFILE_DIR}\"
 "
 
@@ -35,9 +33,11 @@ start_pre() {
 	
 	if [ ! -z ${command_user} ]; then
 		checkpath --directory --owner "${command_user}" --mode 0755 \
-			"${KEA_PIDFILE_DIR}" /var/db/kea /var/lib/kea
-		checkpath --file --owner "${command_user}" --mode 0660 \
-			"${KEA_LOCKFILE_DIR}"/logger_lockfile
+			"${KEA_LOCKFILE_DIR}" /var/lib/kea
+		if [ "x${KEA_LOCKFILE_DIR}" != "xnone" ]; then
+			checkpath --file --owner "${command_user}" --mode 0660 \
+				"${KEA_LOCKFILE_DIR}"/logger_lockfile
+		fi
 		/sbin/setcap "CAP_NET_RAW=+ep CAP_NET_BIND_SERVICE=+ep" "${command}"
 	fi
 

@@ -8,10 +8,7 @@
 
 # Specify a log destination (can be either a file name, or one of:
 # stdout, stderr, syslog, syslog:<facility>
-#KEA_LOGGER_DESTINATION="syslog:daemon"
-
-# Specify the directory for the PID file
-#KEA_PIDFILE_DIR="/run/kea"
+#KEA_LOGGER_DESTINATION="/var/log/kea-dhcp4.log"
 
 # Specify the directory for the LOCK file
-#KEA_LOCKFILE_DIR="${KEA_PIDFILE_DIR}"
+#KEA_LOCKFILE_DIR="/run/kea"
