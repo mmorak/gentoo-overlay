@@ -95,6 +95,7 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}-dhcp-ddns-initd ${PN}-dhcp-ddns
 
 	keepdir /var/lib/${PN}
+	fowners dhcp:dhcp /var/lib/${PN}
 
 	# Delete libtool files, static libraries, and useless folders
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
