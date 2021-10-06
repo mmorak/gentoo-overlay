@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<longdescription>
+		eclingo is a solver for epistemic logic programs built upon the ASP
+		system clingo.  Currently, eclingo can compute world views under the
+		following semantics:
+
+		- Gelfond 1991; Gelfond and Przymusinska 1993; Gelfond 1994 (G94)
+		- Kahl et al. 2015 (K15)
+	</longdescription>
+	<upstream>
+		<maintainer status="inactive">
+			<email>javier.garea}@udc.es</email>
+			<name>Javier Garea</name>
+		</maintainer>
+		<changelog>https://github.com/potassco/eclingo/releases</changelog>
+		<doc lang="en">https://arxiv.org/pdf/2008.02018.pdf</doc>
+		<bugs-to>https://github.com/potassco/eclingo/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
