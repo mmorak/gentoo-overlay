@@ -1,0 +1,33 @@
+diff -Naur a/lib/pddl/src/pddl/detail/normalization/Precondition.cpp b/lib/pddl/src/pddl/detail/normalization/Precondition.cpp
+--- a/lib/pddl/src/pddl/detail/normalization/Precondition.cpp	2017-11-25 16:21:45.000000000 +0000
++++ b/lib/pddl/src/pddl/detail/normalization/Precondition.cpp	2021-10-06 16:28:50.263980764 +0000
+@@ -83,8 +83,7 @@
+ 
+ 	derivedPredicate->declaration->precondition = std::make_unique<normalizedAST::And<normalizedAST::Literal>>(std::move(normalizedArguments));
+ 
+-	// TODO: investigate, could be a compiler bug
+-	return std::move(derivedPredicate);
++	return derivedPredicate;
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+@@ -112,8 +111,7 @@
+ 			return normalizeTopLevel(x, normalizationContext);
+ 		});
+ 
+-	// TODO: investigate, could be a compiler bug
+-	return std::move(derivedPredicate);
++	return derivedPredicate;
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+@@ -174,8 +172,7 @@
+ 
+ 	derivedPredicate->declaration->precondition = std::make_unique<normalizedAST::Or<normalizedAST::Literal>>(std::move(normalizedArguments));
+ 
+-	// TODO: investigate, could be a compiler bug
+-	return std::move(derivedPredicate);
++	return derivedPredicate;
+ }
+ 
+ ////////////////////////////////////////////////////////////////////////////////////////////////////

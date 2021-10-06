@@ -1,0 +1,10 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2017-11-25 16:21:45.000000000 +0000
++++ b/CMakeLists.txt	2021-10-06 16:58:53.848831652 +0000
+@@ -38,3 +38,6 @@
+ if(PLASP_BUILD_TESTS)
+ 	add_subdirectory(tests)
+ endif(PLASP_BUILD_TESTS)
++
++install(TARGETS plasp-app DESTINATION bin)
++install(TARGETS colorlog pddl plasp DESTINATION lib64)

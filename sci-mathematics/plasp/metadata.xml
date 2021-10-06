@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<longdescription>
+		plasp is a tool collection for planning in answer set programming.
+		plasp 3 supports the input languages PDDL 3.1 (except for advanced
+		features such as durative actions, numerical fluents, and preferences)
+		and SAS (full support of SAS 3), which is used by Fast Downward.
+	</longdescription>
+	<upstream>
+		<maintainer status="inactive">
+			<email>patrick.luehne@student.hpi.uni-potsdam.de</email>
+			<name>Patrick Lühne</name>
+		</maintainer>
+		<changelog>https://github.com/potassco/plasp/blob/master/CHANGELOG.md</changelog>
+		<doc lang="en">https://www.cs.uni-potsdam.de/wv/publications/DBLP_conf/lpnmr/GebserKKS11a.pdf</doc>
+		<bugs-to>https://github.com/potassco/plasp/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
