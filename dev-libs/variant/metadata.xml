@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="unknown">
+			<name>Mapbox, Inc.</name>
+		</maintainer>
+		<changelog>https://github.com/mapbox/variant/blob/master/CHANGELOG.md</changelog>
+		<doc lang="en">https://github.com/mapbox/variant#readme/</doc>
+		<bugs-to>https://github.com/mapbox/variant/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
