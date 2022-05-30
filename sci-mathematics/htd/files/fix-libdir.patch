@@ -1,0 +1,45 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b0ab33..781a9f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,6 +16,7 @@ include(CPack)
+ include(CTest)
+ include(CheckIncludeFileCXX)
+ include(WriteCompilerDetectionHeader)
++include(GNUInstallDirs)
+ 
+ find_package(Git)
+ if(GIT_FOUND)
+diff --git a/src/htd/CMakeLists.txt b/src/htd/CMakeLists.txt
+index 29adb11..e010fee 100644
+--- a/src/htd/CMakeLists.txt
++++ b/src/htd/CMakeLists.txt
+@@ -77,5 +77,5 @@ if(UNIX)
+     )
+ endif(UNIX)
+ 
+-install(TARGETS htd DESTINATION lib)
++install(TARGETS htd DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/htd" DESTINATION include)
+diff --git a/src/htd_cli/CMakeLists.txt b/src/htd_cli/CMakeLists.txt
+index c5f1d8f..f2f1efe 100644
+--- a/src/htd_cli/CMakeLists.txt
++++ b/src/htd_cli/CMakeLists.txt
+@@ -51,5 +51,5 @@ if(UNIX)
+     )
+ endif(UNIX)
+ 
+-install(TARGETS htd_cli DESTINATION lib)
++install(TARGETS htd_cli DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/htd_cli" DESTINATION include)
+diff --git a/src/htd_io/CMakeLists.txt b/src/htd_io/CMakeLists.txt
+index da811a6..1f6f6fa 100644
+--- a/src/htd_io/CMakeLists.txt
++++ b/src/htd_io/CMakeLists.txt
+@@ -55,5 +55,5 @@ if(MSVC)
+     target_link_libraries(htd_io htd)
+ endif(MSVC)
+ 
+-install(TARGETS htd_io DESTINATION lib)
++install(TARGETS htd_io DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/htd_io" DESTINATION include)
