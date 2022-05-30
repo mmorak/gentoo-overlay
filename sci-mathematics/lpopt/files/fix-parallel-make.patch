@@ -1,0 +1,12 @@
+diff -ur a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2016-08-29 15:41:30.000000000 +0000
++++ b/src/Makefile.am	2022-05-30 22:55:43.707672945 +0000
+@@ -24,6 +24,8 @@
+ 
+ PARSER = parser/parser.yy parser/scanner.ll parser/Driver.cpp
+ 
++${BUILT_SOURCES}: ${PARSER}
++
+ # YACC flags
+ AM_YFLAGS = -d
+ # FLEX flags

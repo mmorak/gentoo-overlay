@@ -1,0 +1,24 @@
+diff -ur a/src/optimization/LogicProgramOptimizationManager.cpp b/src/optimization/LogicProgramOptimizationManager.cpp
+--- a/src/optimization/LogicProgramOptimizationManager.cpp	2016-08-30 19:16:44.000000000 +0000
++++ b/src/optimization/LogicProgramOptimizationManager.cpp	2022-05-30 20:59:46.153250373 +0000
+@@ -83,7 +83,7 @@
+ 
+ 		unique_ptr<IHypergraph> hg(st.toHypergraph(*htd));
+ 
+-		unique_ptr<htd::ITreeDecompositionAlgorithm> treeDecompositionAlgorithm(htd->treeDecompositionAlgorithmFactory().getTreeDecompositionAlgorithm());
++		unique_ptr<htd::ITreeDecompositionAlgorithm> treeDecompositionAlgorithm(htd->treeDecompositionAlgorithmFactory().createInstance());
+ 		treeDecompositionAlgorithm->addManipulationOperation(st.createHeadRootingOperation(htd.get()));
+ 		unique_ptr<ITreeDecomposition> decomp(treeDecompositionAlgorithm->computeDecomposition(*hg));
+ 		if (decomp->maximumBagSize() > width) width = decomp->maximumBagSize();
+diff -ur a/src/parser/scanner.ll b/src/parser/scanner.ll
+--- a/src/parser/scanner.ll	2016-08-30 17:26:30.000000000 +0000
++++ b/src/parser/scanner.ll	2022-05-30 20:59:21.641313946 +0000
+@@ -22,6 +22,8 @@
+ 	#include "scanner.h"
+ 	#include "Driver.h"
+ 	#define yyterminate() return token::END
++
++	#include <algorithm>
+ %}
+ 
+ %option noyywrap nounput batch c++ yyclass="FlexScanner"
