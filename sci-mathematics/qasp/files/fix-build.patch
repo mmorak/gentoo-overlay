@@ -1,0 +1,55 @@
+diff -ur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-10-28 16:39:09.000000000 +0000
++++ b/CMakeLists.txt	2022-05-31 18:27:47.677734197 +0000
+@@ -6,8 +6,8 @@
+ #
+ 
+ ## Grounder
+-set(HAVE_GRINGO                 1)
+-set(HAVE_GRINGO_EXTERNAL        0)
++set(HAVE_GRINGO                 0)
++set(HAVE_GRINGO_EXTERNAL        1)
+ set(HAVE_IDLV                   0)
+ 
+ ## Solver
+@@ -32,7 +32,7 @@
+ set(ENABLE_COVERAGE             0)
+ set(ENABLE_PROFILING            0)
+ set(ENABLE_NATIVE               0)
+-set(ENABLE_STATIC               1)
++set(ENABLE_STATIC               0)
+ 
+ ######################################
+ 
+@@ -64,8 +64,8 @@
+ 
+ 
+ install(TARGETS qaspcli qasp
+-    RUNTIME PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE WORLD_READ WORLD_WRITE
+-    ARCHIVE PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ GROUP_WRITE WORLD_READ WORLD_WRITE
+-    LIBRARY PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ GROUP_WRITE WORLD_READ WORLD_WRITE
+-    PUBLIC_HEADER PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ GROUP_WRITE WORLD_READ WORLD_WRITE DESTINATION "include/qasp"
+-)
+\ No newline at end of file
++    RUNTIME PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ WORLD_READ
++    ARCHIVE PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ 
++    LIBRARY PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ 
++    PUBLIC_HEADER PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ DESTINATION "include/qasp"
++)
+diff -ur a/lib/wasp/CMakeLists.txt b/lib/wasp/CMakeLists.txt
+--- a/lib/wasp/CMakeLists.txt	2021-10-28 16:39:09.000000000 +0000
++++ b/lib/wasp/CMakeLists.txt	2022-05-31 18:22:51.870468389 +0000
+@@ -2,10 +2,11 @@
+ file(GLOB_RECURSE HEADERS "*.hpp")
+ 
+ add_library(wasp ${SOURCES} ${HEADERS})
++install(TARGETS wasp DESTINATION lib64)
+ 
+ 
+ target_link_libraries(wasp PUBLIC ${Boost_LIBRARIES})
+ target_include_directories(wasp PUBLIC ${Boost_INCLUDE_DIRS})
+ 
+ target_compile_options(wasp PRIVATE -Wno-error -w)
+-target_compile_definitions(wasp PRIVATE __qasp__)
+\ No newline at end of file
++target_compile_definitions(wasp PRIVATE __qasp__)
