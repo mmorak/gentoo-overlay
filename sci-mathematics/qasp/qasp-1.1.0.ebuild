@@ -12,16 +12,15 @@ SRC_URI="https://github.com/kwrx/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-REQUIRED_USE=""
 
 DEPEND="
-	>=dev-libs/boost-1.78.0
+	>=dev-libs/boost-1.72.0
+	sci-mathematics/clingo
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=dev-util/cmake-3.18
-	>=dev-util/re2c-0.13
+	>=dev-build/cmake-3.20
+	>=dev-util/re2c-2.2
 "
 
 PATCHES="
