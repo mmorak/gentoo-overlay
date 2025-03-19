@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake python-single-r1
 
@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND=""
 RDEPEND="
 	${DEPEND}
 	python? (
@@ -26,8 +25,8 @@ RDEPEND="
 	)
 	"
 BDEPEND="
-	>=dev-util/cmake-3.18
-	>=dev-util/re2c-0.13
+	>=dev-build/cmake-3.18
+	>=dev-util/re2c-2.2
 	>=sys-devel/bison-2.5
 	python? ( ${PYTHON_DEPS} )
 "

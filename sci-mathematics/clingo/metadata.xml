@@ -25,5 +25,6 @@
 		<changelog>https://github.com/potassco/clingo/blob/master/CHANGES.md</changelog>
 		<doc lang="en">https://github.com/potassco/guide/releases</doc>
 		<bugs-to>https://github.com/potassco/clingo/issues</bugs-to>
+		<remote-id type="github">potassco/clingo</remote-id>
 	</upstream>
 </pkgmetadata>

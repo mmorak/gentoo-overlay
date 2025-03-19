@@ -19,18 +19,20 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	${DEPEND}
-	python? ( ${PYTHON_DEPS})
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/cffi-1.14
+	)
 	"
 BDEPEND="
 	>=dev-build/cmake-3.18
-	>=dev-util/re2c-0.13
+	>=dev-util/re2c-1.1.1
 	>=sys-devel/bison-2.5
 	python? ( ${PYTHON_DEPS} )
 "
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
-		-DPYCLINGO_USER_INSTALL=OFF
 		-DCLINGO_BUILD_WITH_PYTHON="$(usex python ON OFF)"
 	)
 	cmake_src_configure
