@@ -1,0 +1,41 @@
+diff '--color=auto' -ur a/qasp2qbf/qasp2qbf.py b/qasp2qbf/qasp2qbf.py
+--- a/qasp2qbf/qasp2qbf.py	2022-04-29 13:17:34.000000000 +0000
++++ b/qasp2qbf/qasp2qbf.py	2025-03-21 12:40:58.000000000 +0000
+@@ -23,9 +23,9 @@
+ Please ignore the next messages."""
+ OUTPUT_FILE = "out.qasp2qbf"
+ PIPE_OPTION = "--pipe"
+-PIPE_CMD = """clingo --output=smodels {} | qasp2qbf.py --no-warnings | \
+-lp2normal2 | lp2acyc | lp2sat | qasp2qbf.py --cnf2qdimacs | \
+-caqe-linux --partial-assignments | qasp2qbf.py --interpret"""
++PIPE_CMD = """clingo --output=smodels {} | qasp2qbf --no-warnings | \
++lp2normal2 | lp2acyc | lp2sat | qasp2qbf --cnf2qdimacs | \
++caqe-linux --partial-assignments | qasp2qbf --interpret"""
+ PIPE_MESSAGE = """Run the pipeline calling clingo, lp2normal2, lp2acyc, lp2sat \
+ and caqe-linux"""
+ CNF_MESSAGE = """Translate from cnf to qdimacs. \
+@@ -47,12 +47,12 @@
+ 
+ class QaspArgumentParser:
+ 
+-    usage = "qasp2qbf.py [options] [file]"
++    usage = "qasp2qbf [options] [file]"
+ 
+     epilog = """
+ Default command-line:
+-clingo --output=smodels <files> | qasp2qbf.py | lp2normal2 | lp2acyc | lp2sat | \
+-qasp2qbf.py --cnf2qdimacs | caqe-linux | qasp2qbf.py --interpret
++clingo --output=smodels <files> | qasp2qbf | lp2normal2 | lp2acyc | lp2sat | \
++qasp2qbf --cnf2qdimacs | caqe-linux | qasp2qbf --interpret
+ 
+ qasp2qbf is part of Potassco: https://potassco.org/
+ Get help/report bugs via : https://potassco.org/support
+@@ -61,7 +61,7 @@
+     def run(self):
+ 
+         # version
+-        _version = "qasp2qbf.py version " + VERSION
++        _version = "qasp2qbf version " + VERSION
+ 
+         # command parser
+         _epilog = "\nusage: " + self.usage + self.epilog

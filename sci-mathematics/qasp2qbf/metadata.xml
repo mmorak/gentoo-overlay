@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="inactive">
+			<email>javier@cs.uni-potsdam.de</email>
+			<name>Javier Romero Davila</name>
+		</maintainer>
+		<doc lang="en">https://doi.org/10.1017/S1471068421000259</doc>
+		<bugs-to>https://github.com/potassco/qasp2qbf/issues</bugs-to>
+		<remote-id type="github">potassco/qasp2qbf</remote-id>
+	</upstream>
+</pkgmetadata>

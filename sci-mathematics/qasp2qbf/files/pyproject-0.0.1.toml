@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qasp2qbf"
+version = "0.0.1"
+dependencies = []
+
+[project.scripts]
+qasp2qbf = "qasp2qbf.__main__:execute_script"
