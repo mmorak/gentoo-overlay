@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>tomi.janhunen@tuni.fi</email>
+			<name>Tomi Janhunen</name>
+		</maintainer>
+		<bugs-to>https://github.com/tomijanhunen/asptools/issues</bugs-to>
+		<remote-id type="github">tomijanhunen/asptools</remote-id>
+	</upstream>
+</pkgmetadata>
