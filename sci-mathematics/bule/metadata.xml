@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>vale1410@gmail.com</email>
+			<name>Valentin Mayer-Eichberger</name>
+		</maintainer>
+		<bugs-to>https://github.com/vale1410/bule/issues</bugs-to>
+		<remote-id type="github">vale1410/bule</remote-id>
+	</upstream>
+</pkgmetadata>
