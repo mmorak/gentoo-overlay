@@ -1,0 +1,45 @@
+diff '--color=auto' -ur a/makefile b/makefile
+--- a/makefile	2017-03-17 10:48:07.000000000 +0000
++++ b/makefile	2025-04-07 11:56:50.000000000 +0000
+@@ -30,7 +30,7 @@
+ 
+ 
+ nenofex: $(TARGETS)
+-	$(CC) $(CFLAGS) -o nenofex main.o -L. -lnenofex
++	$(CC) $(CFLAGS) -o nenofex main.o -L. -lnenofex -lpicosat
+ 
+ main.o: main.c mem.h nenofex.h 
+ 
+@@ -49,7 +49,7 @@
+ nenofex.o: nenofex.c nenofex_types.h stack.h mem.h
+ nenofex.fpico: nenofex.c nenofex_types.h stack.h mem.h
+ 
+-libnenofex.a: nenofex.o stack.o queue.o mem.o atpg.o ../picosat/picosat.o
++libnenofex.a: nenofex.o stack.o queue.o mem.o atpg.o
+ 	ar rc $@ $^
+ 	ranlib $@
+ 
+diff '--color=auto' -ur a/nenofex.c b/nenofex.c
+--- a/nenofex.c	2017-03-17 10:48:07.000000000 +0000
++++ b/nenofex.c	2025-04-07 11:56:22.000000000 +0000
+@@ -29,7 +29,7 @@
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/resource.h>
+-#include "../picosat/picosat.h"
++#include <picosat.h>
+ #include "nenofex_types.h"
+ #include "stack.h"
+ #include "mem.h"
+diff '--color=auto' -ur a/nenofex_types.h b/nenofex_types.h
+--- a/nenofex_types.h	2017-03-17 10:48:07.000000000 +0000
++++ b/nenofex_types.h	2025-04-07 11:56:37.000000000 +0000
+@@ -21,7 +21,7 @@
+ #ifndef _NENOFEX_TYPES_H_
+ #define _NENOFEX_TYPES_H_
+ 
+-#include "../picosat/picosat.h"
++#include <picosat.h>
+ #include "mem.h"
+ #include "stack.h"
+ #include "queue.h"
