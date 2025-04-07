@@ -1,0 +1,21 @@
+diff '--color=auto' -ur a/libminisat_stubs.c b/libminisat_stubs.c
+--- a/libminisat_stubs.c	2016-04-29 13:58:30.000000000 +0000
++++ b/libminisat_stubs.c	2025-04-07 10:31:26.000000000 +0000
+@@ -74,7 +74,7 @@
+ 
+ }
+ 
+-CAMLprim value Val_clause(vec<Lit>& clause) {
++CAMLprim value Val_clause(const vec<Lit>& clause) {
+   value arr;
+   arr = caml_alloc(clause.size(), 0);
+   for (int i = 0; i < clause.size(); i++) {
+@@ -165,7 +165,7 @@
+ 
+   Solver* _solver = solver_val(solver);
+   if (!_solver->okay()) {
+-    arr = Val_clause(_solver->conflict);
++    arr = Val_clause(_solver->conflict.toVec());
+   }
+ 
+   CAMLreturn(arr);

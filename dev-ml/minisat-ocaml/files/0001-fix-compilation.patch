@@ -1,0 +1,14 @@
+diff '--color=auto' -ur a/myocamlbuild.ml b/myocamlbuild.ml
+--- a/myocamlbuild.ml	2016-04-29 13:58:30.000000000 +0000
++++ b/myocamlbuild.ml	2025-04-07 09:57:27.000000000 +0000
+@@ -15,8 +15,8 @@
+ 
+ let _ = dispatch begin function
+    | After_rules ->
+-       flag ["c"; "compile"; "g++"] (S[A"-cc"; A"g++"; A"-ccopt"; A"-fPIC"]);
+-       flag ["cc"; "compile"; "g++"] (S[A"-cc"; A"g++"; A"-ccopt"; A"-fPIC"]);
++       flag ["c"; "compile"; "g++"] (S[A"-cc"; A"g++"; A"-ccopt"; A"-fPIC"; A"-ccopt"; A"-fpermissive"]);
++       flag ["cc"; "compile"; "g++"] (S[A"-cc"; A"g++"; A"-ccopt"; A"-fPIC"; A"-ccopt"; A"-fpermissive"]);
+ 
+        List.iter begin fun (lib,dir) ->
+          flag ["ocaml"; "link"; "c_use_"^lib; "byte"]
