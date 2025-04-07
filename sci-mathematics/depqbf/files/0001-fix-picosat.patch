@@ -1,0 +1,54 @@
+diff '--color=auto' -ur a/makefile b/makefile
+--- a/makefile	2017-08-02 11:41:50.000000000 +0000
++++ b/makefile	2025-04-07 12:25:50.000000000 +0000
+@@ -2,7 +2,7 @@
+ #CFLAGS=-Wextra -g3 -Wall -Wno-unused-parameter -Wno-unused -pedantic -std=c99
+ #CFLAGS=-Wextra -g3 -Wall -Wno-unused-parameter -Wno-unused -pedantic -std=c99 -pg -fprofile-arcs -ftest-coverage
+ OBJECTS=qdpll_main.o qdpll_app.o qdpll.o qdpll_mem.o qdpll_dep_man_qdag.o qdpll_pqueue.o qdpll_dynamic_nenofex.o 
+-LFLAGS=-L./picosat/ -lpicosat -L./nenofex -lnenofex
++LFLAGS=-lpicosat -L./nenofex -lnenofex
+ 
+ 
+ MAJOR=1
+@@ -31,7 +31,7 @@
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ depqbf: $(TARGETS)
+-	$(CC) $(CFLAGS) qdpll_main.o qdpll_app.o -L. -lqdpll -o depqbf
++	$(CC) $(CFLAGS) qdpll_main.o qdpll_app.o $(LFLAGS) -L. -lqdpll -o depqbf
+ 
+ qdpll_main.o: qdpll_main.c qdpll.h
+ 
+@@ -66,7 +66,7 @@
+ qdpll.h qdpll_dep_man_qdag_types.h qdpll_stack.h \
+ qdpll_internals.h
+ 
+-libqdpll.a: qdpll.o qdpll_pqueue.o qdpll_mem.o qdpll_dep_man_qdag.o qdpll_dynamic_nenofex.o ./nenofex/nenofex.o ./nenofex/stack.o ./nenofex/queue.o ./nenofex/mem.o ./nenofex/atpg.o  ./picosat/picosat.o
++libqdpll.a: qdpll.o qdpll_pqueue.o qdpll_mem.o qdpll_dep_man_qdag.o qdpll_dynamic_nenofex.o ./nenofex/nenofex.o ./nenofex/stack.o ./nenofex/queue.o ./nenofex/mem.o ./nenofex/atpg.o
+ 	ar rc $@ $^
+ 	ranlib $@
+ 
+diff '--color=auto' -ur a/qdpll.c b/qdpll.c
+--- a/qdpll.c	2017-08-02 11:41:50.000000000 +0000
++++ b/qdpll.c	2025-04-07 12:25:20.000000000 +0000
+@@ -40,7 +40,7 @@
+ #include "qdpll_dep_man_qdag.h"
+ #include "qdpll_config.h"
+ #include "qdpll_dynamic_nenofex.h"
+-#include "./picosat/picosat.h"
++#include <picosat.h>
+ 
+ #define QDPLL_ABORT_QDPLL(cond,msg)					\
+   do {									\
+diff '--color=auto' -ur a/qdpll_internals.h b/qdpll_internals.h
+--- a/qdpll_internals.h	2017-08-02 11:41:50.000000000 +0000
++++ b/qdpll_internals.h	2025-04-07 12:25:20.000000000 +0000
+@@ -31,7 +31,7 @@
+ #include "qdpll_pcnf.h"
+ #include "qdpll_config.h"
+ #include "qdpll.h"
+-#include "./picosat/picosat.h"
++#include <picosat.h>
+ #include "./nenofex/nenofex.h"
+ 
+ /* Support both ascii QRP and binary QRP format when tracing. */

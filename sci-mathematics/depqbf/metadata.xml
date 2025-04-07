@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>fml@florianlonsing.com</email>
+			<name>Florian Lonsing</name>
+		</maintainer>
+		<bugs-to>https://github.com/lonsing/depqbf/issues</bugs-to>
+		<remote-id type="github">lonsing/depqbf</remote-id>
+	</upstream>
+</pkgmetadata>
