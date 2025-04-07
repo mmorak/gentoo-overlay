@@ -1,0 +1,15 @@
+diff '--color=auto' -ur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2025-04-07 09:47:56.000000000 +0000
++++ b/CMakeLists.txt	2025-04-07 09:48:19.000000000 +0000
+@@ -73,10 +73,7 @@
+ #--------------------------------------------------------------------------------------------------
+ # Installation targets:
+ 
+-install(TARGETS minisat-lib-static minisat-lib-shared minisat_core minisat_simp 
+-        RUNTIME DESTINATION bin
+-        LIBRARY DESTINATION lib
+-        ARCHIVE DESTINATION lib)
++install(TARGETS minisat-lib-static minisat-lib-shared minisat_core minisat_simp)
+ 
+ install(DIRECTORY minisat/mtl minisat/utils minisat/core minisat/simp
+         DESTINATION include/minisat
