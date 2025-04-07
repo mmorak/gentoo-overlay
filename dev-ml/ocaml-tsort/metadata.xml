@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>daniil@baturin.org</email>
+			<name>Daniil Baturin</name>
+		</maintainer>
+		<bugs-to>https://github.com/dmbaturin/ocaml-tsort/issues</bugs-to>
+		<remote-id type="github">dmbaturin/ocaml-tsort</remote-id>
+	</upstream>
+</pkgmetadata>
