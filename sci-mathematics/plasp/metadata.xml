@@ -19,5 +19,6 @@
 		<changelog>https://github.com/potassco/plasp/blob/master/CHANGELOG.md</changelog>
 		<doc lang="en">https://www.cs.uni-potsdam.de/wv/publications/DBLP_conf/lpnmr/GebserKKS11a.pdf</doc>
 		<bugs-to>https://github.com/potassco/plasp/issues</bugs-to>
+		<remote-id type="github">potassco/plasp</remote-id>
 	</upstream>
 </pkgmetadata>

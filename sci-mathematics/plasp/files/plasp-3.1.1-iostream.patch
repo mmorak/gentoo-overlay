@@ -1,0 +1,11 @@
+diff '--color=auto' -ur a/app/include/plasp-app/Command.h b/app/include/plasp-app/Command.h
+--- a/app/include/plasp-app/Command.h	2017-11-25 16:21:45.000000000 +0000
++++ b/app/include/plasp-app/Command.h	2025-04-11 09:12:54.000000000 +0000
+@@ -1,6 +1,7 @@
+ #ifndef __PLASP_APP__COMMAND_H
+ #define __PLASP_APP__COMMAND_H
+ 
++#include <iostream>
+ #include <tuple>
+ 
+ #include <cxxopts.hpp>
