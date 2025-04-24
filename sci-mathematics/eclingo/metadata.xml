@@ -21,5 +21,6 @@
 		<changelog>https://github.com/potassco/eclingo/releases</changelog>
 		<doc lang="en">https://arxiv.org/pdf/2008.02018.pdf</doc>
 		<bugs-to>https://github.com/potassco/eclingo/issues</bugs-to>
+		<remote-id type="github">potassco/eclingo</remote-id>
 	</upstream>
 </pkgmetadata>

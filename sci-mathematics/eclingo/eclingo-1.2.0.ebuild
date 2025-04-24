@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=sci-mathematics/clingo-5.5[python]
+	sci-mathematics/clingox
 "
 BDEPEND="
 	dev-python/poetry-core
