@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>michael@morak.net</email>
+		<name>Michael Morak</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>kaminski@cs.uni-potsdam.de</email>
+			<name>Roland Kaminski</name>
+		</maintainer>
+		<changelog>https://github.com/potassco/python-clingox/releases</changelog>
+		<bugs-to>https://github.com/potassco/python-clingox/issues</bugs-to>
+		<remote-id type="github">potassco/python-clingox</remote-id>
+	</upstream>
+</pkgmetadata>
